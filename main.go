@@ -23,7 +23,10 @@ func main() {
 	db := mustInitDB()
 	defer db.Close()
 
-	svc := service.New(db, branca.NewBranca("supersecretkeyyoushouldnotcommit"))
+	codec := branca.NewBranca("supersecretkeyyoushouldnotcommit")
+	codec.SetTTL(uint32(service.TokenLifeSpan.Seconds()))
+
+	svc := service.New(db, codec)
 	h := handler.New(svc)
 
 	addr := fmt.Sprintf(":%d", port)
