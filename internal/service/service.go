@@ -1,4 +1,4 @@
-package main
+package service
 
 import (
 	"database/sql"
@@ -9,4 +9,12 @@ import (
 type Service struct {
 	Db *sql.DB
 	Branca *branca.Branca
+}
+
+// New initialises the service
+func New(db *sql.DB, codec *branca.Branca) *Service {
+	return &Service {
+		Db: db,
+		Branca: codec,
+	}
 }

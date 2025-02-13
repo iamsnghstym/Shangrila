@@ -1,13 +1,19 @@
 package handler
 
+import (
+	"github.com/iamsnghstym/Shangrila/internal/service"
+	"github.com/matryer/way"
+	"net/http"
+)
+
 // Handler holds the handler configuration
-type Handler struct {
+type handler struct {
 	*service.Service
 }
 
 // New creates a new router with pre-defined routing
-func New(s *internal.Service) http.Handler {
-	h := Handler {s}
+func New(s *service.Service) http.Handler {
+	h := handler {s}
 
 	api := way.NewRouter()
 	api.HandleFunc("POST", "/login", h.login)

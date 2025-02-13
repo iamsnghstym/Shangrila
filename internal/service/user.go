@@ -1,4 +1,4 @@
-package main
+package service
 
 // User models the actual user
 type User struct {
