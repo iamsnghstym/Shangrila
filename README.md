@@ -10,6 +10,7 @@ Below is a table of the packages used in this project:
 |--------------|---------|-------------|-------------|
 | pgx  | 3.6.2   | PostgreSQL Driver and Toolkit | https://github.com/jackc/pgx |
 | branca  | 0.0.0   | Secure alternative to JWT | https://github.com/hako/branca |
+| way  | 0.0.0   | Simple Router | https://github.com/matryer/way |
 
 ## Database
 
