@@ -1,14 +1,15 @@
 # Project Name
 
 ## Introduction
-Provide a brief overview of your project here. Explain what it does, why it was created, and any relevant background information.
+Shangrila is a minimalistic microblogging website (similar to Twitter).
 
 ## Packages Used
 Below is a table of the packages used in this project:
 
-| Package Name  | Version | Description |
-|--------------|---------|-------------|
-| ExamplePkg1  | 1.2.3   | Description of what this package does |
+| Package Name  | Version | Description | Link |
+|--------------|---------|-------------|-------------|
+| pgx  | 3.6.2   | PostgreSQL Driver and Toolkit | https://github.com/jackc/pgx |
+| branca  | 0.0.0   | Secure alternative to JWT | https://github.com/hako/branca |
 
 ## How to Use
 1. Clone the repository:
