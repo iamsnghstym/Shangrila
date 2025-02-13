@@ -20,7 +20,7 @@ func New(s *service.Service) http.Handler {
 	api.HandleFunc("POST", "/register", h.createUser)
 
 	r := way.NewRouter()
-	r.Handle("*", "/api", http.StripPrefix("/api", api))
+	r.Handle("*", "/api...", http.StripPrefix("/api", api))
 
 	return r
 }
