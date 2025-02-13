@@ -11,6 +11,32 @@ Below is a table of the packages used in this project:
 | pgx  | 3.6.2   | PostgreSQL Driver and Toolkit | https://github.com/jackc/pgx |
 | branca  | 0.0.0   | Secure alternative to JWT | https://github.com/hako/branca |
 
+## Database
+
+We are using CockroachDB (https://www.cockroachlabs.com/) for this project.
+
+1. Install
+```
+brew install cockroachdb/tap/cockroach
+```
+
+2. Start a Local CockroachDB Cluster
+```
+cockroach start-single-node --insecure --listen-addr=localhost
+```
+
+To create a persistent database:
+
+```
+cockroach sql --insecure -e 'CREATE DATABASE mydb;'
+```
+
+3. Use SQL schema (schema.sql) and use it to create the database
+
+```
+cat schema.sql | cockroach sql --insecure -f schema.sql
+```
+
 ## How to Use
 1. Clone the repository:
    ```sh
