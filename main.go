@@ -20,27 +20,27 @@ const (
 func main() {
 	fmt.Println("Welcome to Shangrila.")
 
-	// Open database connection
-	db, err := sql.Open("pgx", databaseURL)
-	if err != nil {
-		log.Fatalf("Could not open database connection :%v/n", err)
-	}
+	db := mustInitDB()
 	defer db.Close()
-	if err = db.Ping(); err != nil {
-		log.Fatalf("Could not ping database :%v/n", err)
-	}
 
-	// Initialise service
-	codec := branca.NewBranca("supersecretkeyyoushouldnotcommit")
-	svc := service.New(db, codec)
-
-	// Initialise handler
+	svc := service.New(db, branca.NewBranca("supersecretkeyyoushouldnotcommit"))
 	h := handler.New(svc)
 
-	// server
 	addr := fmt.Sprintf(":%d", port)
-	log.Printf("Accepting connection on PORT -> %d\n", port)
-	if err = http.ListenAndServe(addr, h); err != nil {
-		log.Fatalf("Could not start server: %v\n", err)
+	log.Printf("Server running on PORT %d", port)
+	log.Fatal(http.ListenAndServe(addr, h))
+}
+
+// mustInitDB opens the database and ensures it's accessible
+func mustInitDB() *sql.DB {
+	db, err := sql.Open("pgx", databaseURL)
+	if err != nil {
+		log.Fatal("Could not open database connection:", err)
 	}
+
+	if err = db.Ping(); err != nil {
+		log.Fatal("Could not ping database:", err)
+	}
+
+	return db
 }
